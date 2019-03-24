@@ -20,6 +20,12 @@ html {
     border-radius: 10px;
     box-shadow: 4px 4px 10px;
 }
+#button-bar {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 #game {
     width: 500px;
     margin: auto;
@@ -32,7 +38,7 @@ html {
 }
 
 .game-square {
-    box-shadow: 2px;
+    background: linear-gradient(to bottom right, #fff, #ccc);
 }
 #footer {
     margin: 100px auto 0px auto;

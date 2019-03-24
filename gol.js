@@ -3,6 +3,26 @@ let initialStates = [];
 let finalStates = [];
 
 //Choose initial states of cells ourselves (also initializes final states array) -- need to build
+const chooseInitial = () => {
+    for (i = 0; i < 10; i++)
+    {
+        initialStates[i] = [];
+        finalStates[i] = [];
+        for (j = 0; j < 10; j++)
+        {
+            if (i == 0 || i == 9 || j == 0 || j == 9)
+            {
+                initialStates[i][j] = 0;
+            }
+            else
+            {
+                initialStates[i][j] = Math.round(Math.random());
+            }
+            finalStates[i][j] = 0;
+        }
+    }
+    colorCells(initialStates);
+}
 
 //Randomize initial states of cells (also initializes final states array)
 const randomInitial = () => {
@@ -105,9 +125,15 @@ const gameMove = () => {
     }
 }
 
-randomInitial();
+let run;
+//click Random start button
+document.getElementById("random-start").onclick = () => {
+    clearInterval(run);
+    randomInitial();
 
-let run = setInterval(gameMove, 1500);
+    run = setInterval(gameMove, 1500);
+}
+
 
 
 
