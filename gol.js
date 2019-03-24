@@ -21,21 +21,6 @@ for (i = 0; i < 10; i++)
     }
 }
 
-////store each cell's object in array
-//let cells = [];
-//
-//for (i = 0; i < 10; i++)
-//{
-//    cells[i] = [];
-//    for (j = 0; j < 10; j++)
-//    {
-//        let cellId = "cell-" + i + "-" + j;
-//        cells[i][j] = document.getElementById('game').rows[i].cells[j];
-//    }
-//}
-//console.log(cells);
-
-//display states
 
 //color cells based on state of each cell input
 const colorCells = (states) => {
@@ -57,9 +42,6 @@ const colorCells = (states) => {
 }
 
 colorCells(initialStates);
-
-//repeat this section on a 1s interval
-//iterate through cells not on edges
 
 const gameMove = () => {
     for (i = 1; i < 9; i++)
@@ -107,7 +89,6 @@ const gameMove = () => {
         }
     }
     
-    console.log(finalStates);
     colorCells(finalStates);
     
     //make current finalStates next initialStates
@@ -119,7 +100,6 @@ const gameMove = () => {
             initialStates[i][j] = finalStates[i][j];
         }
     }
-    console.log(initialStates);
 }
 
 let run = setInterval(gameMove, 1500);
