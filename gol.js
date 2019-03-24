@@ -2,23 +2,28 @@
 let initialStates = [];
 let finalStates = [];
 
-//Randomize initial states of cells
-for (i = 0; i < 10; i++)
-{
-    initialStates[i] = [];
-    finalStates[i] = [];
-    for (j = 0; j < 10; j++)
+//Choose initial states of cells ourselves (also initializes final states array) -- need to build
+
+//Randomize initial states of cells (also initializes final states array)
+const randomInitial = () => {
+    for (i = 0; i < 10; i++)
     {
-        if (i == 0 || i == 9 || j == 0 || j == 9)
+        initialStates[i] = [];
+        finalStates[i] = [];
+        for (j = 0; j < 10; j++)
         {
-            initialStates[i][j] = 0;
+            if (i == 0 || i == 9 || j == 0 || j == 9)
+            {
+                initialStates[i][j] = 0;
+            }
+            else
+            {
+                initialStates[i][j] = Math.round(Math.random());
+            }
+            finalStates[i][j] = 0;
         }
-        else
-        {
-            initialStates[i][j] = Math.round(Math.random());
-        }
-        finalStates[i][j] = 0;
     }
+    colorCells(initialStates);
 }
 
 
@@ -40,8 +45,6 @@ const colorCells = (states) => {
         }
     }
 }
-
-colorCells(initialStates);
 
 const gameMove = () => {
     for (i = 1; i < 9; i++)
@@ -101,6 +104,8 @@ const gameMove = () => {
         }
     }
 }
+
+randomInitial();
 
 let run = setInterval(gameMove, 1500);
 
