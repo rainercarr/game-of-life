@@ -1,27 +1,34 @@
-
 let initialStates = [];
 let finalStates = [];
 
 //Choose initial states of cells ourselves (also initializes final states array) -- need to build
+//this so far doesn't work. Why? because, to make the grid clickable, we need to:
+    //create a function that parses the name of the clicked element and changes the value in initialStates accordingly.
 const chooseInitial = () => {
+    //initialize arrays
     for (i = 0; i < 10; i++)
     {
         initialStates[i] = [];
         finalStates[i] = [];
         for (j = 0; j < 10; j++)
         {
-            if (i == 0 || i == 9 || j == 0 || j == 9)
-            {
-                initialStates[i][j] = 0;
-            }
-            else
-            {
-                initialStates[i][j] = Math.round(Math.random());
-            }
+            initialStates[i][j] = 0;
             finalStates[i][j] = 0;
         }
     }
-    colorCells(initialStates);
+    
+    let gameSquares = document.getElementsByClassName("game-square");
+    console.log(gameSquares);
+    for (i = 0; i < gameSquares.length; i++)
+    {
+        gameSquares[i].addEventListener("click", function () {
+            let row = this.id.substring(5,6);
+            let col = this.id.substring(7,8);
+            console.log(row, col);
+            initialStates[row][col] = 1;
+            colorCells(initialStates);
+        });
+    }
 }
 
 //Randomize initial states of cells (also initializes final states array)
@@ -126,6 +133,18 @@ const gameMove = () => {
 }
 
 let run;
+//pick starting cells
+document.getElementById("set-start").onclick = () => {
+    chooseInitial();
+}
+
+//play
+document.getElementById("play").onclick = () => {
+    clearInterval(run);
+    
+    run = setInterval(gameMove, 1500);
+}
+
 //click Random start button
 document.getElementById("random-start").onclick = () => {
     clearInterval(run);
