@@ -1,8 +1,7 @@
 let initialStates = [];
 let finalStates = [];
 
-//Choose initial states of cells ourselves (also initializes final states array) -- need to build
-//this so far doesn't work. Why? because, to make the grid clickable, we need to:
+//Choose initial states of cells ourselves (also initializes final states array)
     //create a function that parses the name of the clicked element and changes the value in initialStates accordingly.
 const chooseInitial = () => {
     //initialize arrays
@@ -135,6 +134,7 @@ const gameMove = () => {
 let run;
 //pick starting cells
 document.getElementById("set-start").onclick = () => {
+    clearInterval(run);
     chooseInitial();
 }
 
