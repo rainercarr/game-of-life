@@ -2,6 +2,7 @@ const hideDisplay = () => {
     const splash = document.getElementById('splash-screen');
     splash.style.display = "none";
 }
+
 let initialStates = [];
 let finalStates = [];
 
@@ -19,6 +20,8 @@ const chooseInitial = () => {
             finalStates[i][j] = 0;
         }
     }
+    //redraw cells in clear state
+    colorCells(initialStates);
     
     let gameSquares = document.getElementsByClassName("game-square");
     console.log(gameSquares);
@@ -136,6 +139,7 @@ const gameMove = () => {
 }
 
 let run;
+let running = false;
 //pick starting cells
 document.getElementById("set-start").onclick = () => {
     clearInterval(run);
@@ -145,8 +149,15 @@ document.getElementById("set-start").onclick = () => {
 //play
 document.getElementById("play").onclick = () => {
     clearInterval(run);
-    
-    run = setInterval(gameMove, 1500);
+    if (!running)
+    {
+        run = setInterval(gameMove, 1500);
+        running = true;
+    }
+    else
+    {
+        running = false;
+    }
 }
 
 //click Random start button
