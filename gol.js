@@ -1,8 +1,17 @@
-const hideDisplay = () => {
+//document.getElementById("close-splash").onclick = () => {
+//    let splashScreen = document.getElementById("splash-screen");
+//    splashScreen.style.display = "none";
+//    let overallContainer = document.getElementById("overall-container");
+//    overallContainer.style.visibility = "visible";
+//    window.location.href="#overall-container"; 
+//}
+
+//hide splash screen
+const hideSplash = () => {
     let splashScreen = document.getElementById("splash-screen");
     splashScreen.style.display = "none";
     let overallContainer = document.getElementById("overall-container");
-    overallContainer.style.visibility = "visible";
+    overallContainer.style.display = "block";
     window.location.href="#overall-container";
 }
 
@@ -24,14 +33,15 @@ const decrementScore = () => {
 }
 
 const resetScore = () => {
-    gameScore = -1;
-    incrementScore();
+    gameScore = 0;
+    currentScore.innerHTML = gameScore;
 }
+
 //display initial score
 incrementScore();
 
 //TURN COUNT
-let gameTurn = 0;
+let gameTurn = 1;
 let currentTurn = document.getElementById("current-turn");
 
 const incrementTurnCount = () => {
@@ -39,6 +49,10 @@ const incrementTurnCount = () => {
     currentTurn.innerHTML = gameTurn;
 }
 
+const resetTurnCount = () => {
+    gameTurn = 1;
+    currentTurn.innerHTML = gameTurn;
+}
 
 //enables user to select initial states of cells in game
 const chooseInitial = () => {
@@ -178,8 +192,8 @@ let run;
 let running = false;
 //pick starting cells
 document.getElementById("set-start").onclick = () => {
-    incrementTurnCount();
     resetScore();
+    resetTurnCount();
     clearInterval(run);
     chooseInitial();
 }
@@ -200,11 +214,10 @@ document.getElementById("play").onclick = () => {
 
 //click Random start button
 document.getElementById("random-start").onclick = () => {
-    incrementTurnCount();
+    resetTurnCount();
     resetScore();
     clearInterval(run);
     randomInitial();
-
     run = setInterval(gameMove, 1500);
 }
 
