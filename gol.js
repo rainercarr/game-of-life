@@ -1,13 +1,46 @@
 const hideDisplay = () => {
-    const splash = document.getElementById('splash-screen');
-    splash.style.display = "none";
+    let splashScreen = document.getElementById("splash-screen");
+    splashScreen.style.display = "none";
+    let overallContainer = document.getElementById("overall-container");
+    overallContainer.style.visibility = "visible";
+    window.location.href="#overall-container";
 }
 
 let initialStates = [];
 let finalStates = [];
 
-//Choose initial states of cells ourselves (also initializes final states array)
-    //create a function that parses the name of the clicked element and changes the value in initialStates accordingly.
+//SCORING
+let gameScore = -1;
+let currentScore = document.getElementById('current-score');
+
+const incrementScore = () => {
+    gameScore++;
+    currentScore.innerHTML = gameScore;
+}
+
+const decrementScore = () => {
+    gameScore--;
+    currentScore.innerHTML = gameScore;
+}
+
+const resetScore = () => {
+    gameScore = -1;
+    incrementScore();
+}
+//display initial score
+incrementScore();
+
+//TURN COUNT
+let gameTurn = 0;
+let currentTurn = document.getElementById("current-turn");
+
+const incrementTurnCount = () => {
+    gameTurn++;
+    currentTurn.innerHTML = gameTurn;
+}
+
+
+//enables user to select initial states of cells in game
 const chooseInitial = () => {
     //initialize arrays
     for (i = 0; i < 10; i++)
@@ -104,6 +137,7 @@ const gameMove = () => {
                 if (neighbors <= 1 || neighbors > 3)
                 {
                     finalStates[i][j] = 0;
+                    decrementScore();
                 }
                 else
                 {
@@ -116,6 +150,7 @@ const gameMove = () => {
                 if (neighbors == 3)
                 {
                     finalStates[i][j] = 1;
+                    incrementScore();
                 }
                 else 
                 {
@@ -126,6 +161,7 @@ const gameMove = () => {
     }
     
     colorCells(finalStates);
+    incrementTurnCount();
     
     //make current finalStates next initialStates
     
@@ -142,6 +178,8 @@ let run;
 let running = false;
 //pick starting cells
 document.getElementById("set-start").onclick = () => {
+    incrementTurnCount();
+    resetScore();
     clearInterval(run);
     chooseInitial();
 }
@@ -162,6 +200,8 @@ document.getElementById("play").onclick = () => {
 
 //click Random start button
 document.getElementById("random-start").onclick = () => {
+    incrementTurnCount();
+    resetScore();
     clearInterval(run);
     randomInitial();
 
