@@ -1,3 +1,7 @@
+const hideDisplay = () => {
+    const splash = document.getElementById('splash-screen');
+    splash.style.display = "none";
+}
 let initialStates = [];
 let finalStates = [];
 

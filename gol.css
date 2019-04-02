@@ -1,15 +1,47 @@
 html {
-    background: radial-gradient(circle, #aee5d8, #7be0ad);
+    background: radial-gradient(circle, #717c89, #ffbf46);
     font-family: Courier New, monospace;
 }
+#overall-container {
+    width: 700px;
+    height: 1000px;
+    padding: 1px;
+    margin: 0px auto;
+}
+#splash-screen {
+    position: absolute;
+    background: url(images/teemu-paananen-283670-unsplash.jpg) 30% no-repeat;
+    height: ;
+    padding: 60px;
+    left: 3vw;
+    right: 3vw;
+    top: 4vw;
+    font-style: italic;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 33px;
+    font-weight: bold;
+/*    font-variant: small-caps;*/
+    line-height: 35px;
+/*    z-index: 5;*/
+    display: block;
+}
+#splash-screen h1 {
+    font-size: 80px;
+}
+#splash-screen li {
+    padding: 10px;
+}
 #header {
-    font-size: 60px;
+    font-size: 50px;
     margin: 20px auto;
     opacity: 0.4;
     font-weight: 600;
     text-align: center;
     font-style: oblique;
-    font-variant: small-caps;    
+/*    font-variant: small-caps; */
+/*    z-index: 4;*/
 }
 #container {
     width: 600px;
