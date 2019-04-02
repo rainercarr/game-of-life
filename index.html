@@ -9,27 +9,27 @@
     </head>
     <body>
         <div id="splash-screen">
-            <h1>#gameoflyfe</h1>
+            <div id="splash-screen-title">#gameoflyfe</div>
             <p>Welcome to #gameoflyfe, based on Conway's Game of Life.</p>
             <p>Of this Life with which we play, the rules are simple and predictable:</p>
             <ul>
                 <li>Living cells are black, and dead cells are white.</li>
-                <li>If a cell has less than two living cells as neighbors, it dies of loneliness. </li>
+                <li>If a cell has less than two living cells as neighbors, it dies of loneliness. :'( </li>
                 <li>If a cell has two or three neighbors, it survives to the next generation.</li>
                 <li>If a cell has more than three neighbors, it dies of overcrowding.</li>
             </ul>
             <p>YOU, young player, are the Giver Of Life.</p>
             <p>Click the select cells button, and choose the cells you wish to give life to at The Beginning. Choose wisely! For, in every generation, you will be judged (scored) based on the number of cells that come to life as a result of your decisions in The Beginning.</p>
             <p>You may give life to a cell at any time in the game, so learn to click (or tap) fast and with care.</p>
-            <button id="play" class="button" onclick="hideDisplay()">Play</button>
+            <button id="close-splash" class="button" onclick="hideDisplay()">Play</button>
         </div>
         <div id="overall-container">
             <div id="header"><h1>#gameoflyfe</h1></div>
             <div id="container">
                 <div id="button-bar">
-                    <button id="set-start" class="controls">Choose Starting Cells</button>
-                    <button id="play" class="controls">Play!</button>
-                    <button id="random-start" class="controls">Random Start</button>
+                    <button id="set-start" class="controls button">Choose Starting Cells</button>
+                    <button id="play" class="controls button">Play Pause</button>
+                    <button id="random-start" class="controls button">Random Start</button>
                 </div>
                 <table id="game">
                     <tr id="row-0" class="game-row">
